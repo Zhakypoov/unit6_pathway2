@@ -1,15 +1,15 @@
 package com.example.inventory.data
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
-import androidx.room.Update
-import androidx.room.Delete
 import androidx.room.Query
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
-class ItemDao {
+
 @Dao
-interface ItemDao{
+interface ItemDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(item: Item)
 
@@ -24,5 +24,4 @@ interface ItemDao{
 
     @Query("SELECT * from items ORDER BY name ASC")
     fun getAllItems(): Flow<List<Item>>
-}
 }
